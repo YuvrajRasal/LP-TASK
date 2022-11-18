@@ -1,24 +1,32 @@
 import logo from './logo.svg';
 import './App.css';
+import ResponsiveAppBar from './components.js/NavBar';
+import NewLogin from './components.js/newLogin';
+import Signup from './components.js/Signup';
+import { BrowserRouter as Router , Routes, Route ,Link } from "react-router-dom";
+import ButtonAppBar from './components.js/newNavBar';
+import Form from './formActions/Form';
+import FormLogin from './formActions/FormLogin';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <ResponsiveAppBar/> */}
+      <ButtonAppBar/>
+      {/* <Routes>
+        <Route path='/' element={<Signup />}/>
+      </Routes> */}
+      <Routes>
+        <Route path='/Login' element={<FormLogin />}/>
+      </Routes>
+      <Routes>
+        <Route path='/' element={<Form />}/>
+      </Routes>
+      {/* <Routes>
+        <Route path='/Login' element={<NewLogin />}/>
+      </Routes> */}
+    </Router>
+
   );
 }
 
