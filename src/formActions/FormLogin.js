@@ -15,20 +15,30 @@ import Checkbox from '@mui/material/Checkbox';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'; 
 import { lightBlue } from '@mui/material/colors';
 import { Link } from 'react-router-dom';
+import FormSuccess from './FormSuccess';
 
 
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const paperStyle={padding:30 ,height:'70vh', width:'20rem',margin:'20px auto', borderRadius :'30 px'}
 const avatarStyle={backgroundColor:'lightBlue'}
 
-const FormLogin = ({ submitForm }) => {
+
+const FormLogin = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  
+  function submitForm() {
+    setIsSubmitted(true);
+  }
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
-    validate
+    validate,
+    "login"
   );
 
-  return (
-    <>
+  return ( 
+  <>
+  { !isSubmitted ?
+  <>
     <h1 align='center'>Login</h1>
     <Paper elevation={10} style={paperStyle} >
     <form onSubmit={handleSubmit}>
@@ -52,7 +62,7 @@ const FormLogin = ({ submitForm }) => {
         <Box mb={2}>
         <TextField variant='outlined'
          type='password' label='password'autoComplete='password'
-          autoFocus fullWidth required
+         fullWidth required
           name='password'
             value={values.password}
             onChange={handleChange}/>
@@ -78,8 +88,10 @@ const FormLogin = ({ submitForm }) => {
     {/* </Container> */}
     </form>  
     </Paper>
+    </> : 
+    <FormSuccess/>}
     </>
-  );
+  )
 };
 
 export default FormLogin;

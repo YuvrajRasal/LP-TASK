@@ -1,9 +1,9 @@
-export default function validateInfo(values) {
+export default function validateInfo(values, page) {
     let errors = {};
   
-    if (!values.username.trim()) {
-      errors.username = 'Username required';
-    }
+    // if (!values.username.trim()) {
+    //   errors.username = 'Username required';
+    // }
     // else if (!/^[A-Za-z]+/.test(values.name.trim())) {
         //   errors.name = 'Enter a valid name';
         // }
@@ -19,15 +19,15 @@ export default function validateInfo(values) {
             errors.password = 'Password needs to be 6 characters or more';
         }
         
-        if (!values.password2) {
+        if (!values.password2 && page === "signup") {
             errors.password2 = 'Password is required';
-        } else if (values.password2 !== values.password) {
+        } else if (values.password2 !== values.password && page === "signup") {
             errors.password2 = 'Passwords do not match';
         }
-        if (!values.gender.trim()) {
+        if (!values.gender.trim() && page === "signup") {
             errors.gender = 'gender required';
           }
-          if (!values.DOB.trim()) {
+          if (!values.DOB.trim() && page === "signup") {
             errors.DOB = 'Date Of Birth required';
           }
         return errors;

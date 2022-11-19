@@ -44,13 +44,13 @@ const submitBtnStyle={padding:15  , borderRadius :'30 px'}
 
 const FormSignup = ({ submitForm }) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
-    submitForm,
-    validate
+    submitForm,   
+    validate, "signup"
   );
 
   return (
     <>
-    <h1 align='center'>Login</h1>
+    <h1 align='center'>Signup</h1>
     <Paper elevation={10} style={paperStyle} >
     <form onSubmit={handleSubmit}>
       <Grid align='center'>
@@ -65,7 +65,7 @@ const FormSignup = ({ submitForm }) => {
         <Box mb={2} >
         <TextField variant='outlined'
          label='email'autoComplete='email' autoFocus fullWidth
-          required
+          required 
           name='email'
           value={values.email}
           onChange={handleChange}/> 
@@ -75,7 +75,7 @@ const FormSignup = ({ submitForm }) => {
         <Box mb={2}>
         <TextField variant='outlined'
          type='password' label='password'autoComplete='password'
-          autoFocus fullWidth required
+           fullWidth required
           name='password'
             value={values.password}
             onChange={handleChange}/>
@@ -85,7 +85,7 @@ const FormSignup = ({ submitForm }) => {
         <Box mb={1}>
         <TextField variant='outlined'
          type='password' label='Confirm_password'autoComplete='Confirm_password'
-          autoFocus fullWidth required
+           fullWidth required
           name='password2'
             value={values.password2}
             onChange={handleChange}/>
@@ -132,7 +132,7 @@ const FormSignup = ({ submitForm }) => {
       <Button type='submit' variant='contained' color='primary' fullWidth  style={submitBtnStyle}>Sign Up</Button>
       </Box>
       <Typography align='center'>Already a member? 
-        <Link to='/Login'>Login</Link>
+        <Link to='/login'>Login</Link>
       </Typography>
     </Grid>  
         </Box>
